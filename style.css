@@ -666,6 +666,14 @@ section {
     font-weight: 600;
 }
 
+.project-card-coming-soon {
+    border-style: dashed;
+    opacity: 0.6;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 /* ================================
    CV SECTION
    ================================ */
