@@ -37,6 +37,29 @@
     --nav-bg: rgba(14, 13, 11, 0.88);
     --scroll-thumb: #2A2722;
 
+    /* Lamp: light metal in dark mode so it's visible on the dark page */
+    --lamp-a: #EDEAE4;
+    --lamp-b: #CFCCC5;
+    --lamp-c: #F5F2EC;
+    --lamp-d: #E2DFD7;
+    --lamp-e: #C6C3BB;
+    --lamp-wire-a: #D8D5CE;
+    --lamp-wire-b: #BDBAB2;
+    --lamp-hi: #FFFFFF;
+    --lamp-accent: #C6C3BB;
+    --lamp-ring: rgba(28, 24, 18, 0.16);
+    --lamp-core: rgba(28, 24, 18, 0.12);
+    --lamp-sheen: rgba(28, 24, 18, 0.03);
+    --lamp-tab-a: #D5D2CA;
+    --lamp-tab-b: #A8A59D;
+    --lamp-tab-hi: #E6E3DC;
+    --lamp-tab-b2: #B5B2AA;
+    --lamp-on-a: #F5F2EC;
+    --lamp-on-b: #E2DFD7;
+    --lamp-on-c: #C6C3BB;
+    --lamp-on-tab: #FFFFFF;
+    --lamp-on-tab2: #D5D2CA;
+
     /* Type */
     --display: 'Archivo', 'Inter', sans-serif;
     --body: 'Inter', sans-serif;
@@ -83,6 +106,29 @@ html.light-mode {
     --card: rgba(28, 24, 18, 0.05);
     --nav-bg: rgba(245, 242, 236, 0.88);
     --scroll-thumb: #C6C0B2;
+
+    /* Lamp: dark metal in light mode so it's visible on the light page */
+    --lamp-a: #2A2A35;
+    --lamp-b: #15151A;
+    --lamp-c: #1E1E2E;
+    --lamp-d: #151520;
+    --lamp-e: #0D0D15;
+    --lamp-wire-a: #3A3A45;
+    --lamp-wire-b: #2A2A35;
+    --lamp-hi: #555560;
+    --lamp-accent: #3A3A50;
+    --lamp-ring: rgba(255, 255, 255, 0.08);
+    --lamp-core: rgba(255, 255, 255, 0.12);
+    --lamp-sheen: rgba(255, 255, 255, 0.03);
+    --lamp-tab-a: #4A4A55;
+    --lamp-tab-b: #2A2A35;
+    --lamp-tab-hi: #5A5A65;
+    --lamp-tab-b2: #3A3A45;
+    --lamp-on-a: #2A2A3E;
+    --lamp-on-b: #1E1E2E;
+    --lamp-on-c: #151520;
+    --lamp-on-tab: #7A7A85;
+    --lamp-on-tab2: #5A5A65;
 }
 
 /* Smooth theme cross-fade for the main themed surfaces */
@@ -249,10 +295,10 @@ img {
 .ceiling-mount {
     width: 28px;
     height: 6px;
-    background: linear-gradient(to bottom, #2a2a35, #15151a);
+    background: linear-gradient(to bottom, var(--lamp-a), var(--lamp-b));
     border-radius: 0 0 3px 3px;
     margin: 0 auto;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
     position: relative;
     z-index: 10;
 }
@@ -265,7 +311,7 @@ img {
     transform: translateX(-50%);
     width: 10px;
     height: 5px;
-    background: linear-gradient(to bottom, #333340, #1a1a25);
+    background: linear-gradient(to bottom, var(--lamp-a), var(--lamp-b));
     border-radius: 1px;
 }
 
@@ -275,40 +321,40 @@ img {
     height: 52px;
     background: repeating-linear-gradient(
         to bottom,
-        #3a3a45 0px,
-        #3a3a45 2px,
-        #2a2a35 2px,
-        #2a2a35 4px
+        var(--lamp-wire-a) 0px,
+        var(--lamp-wire-a) 2px,
+        var(--lamp-wire-b) 2px,
+        var(--lamp-wire-b) 4px
     );
     margin: -1px auto 0;
     position: relative;
     z-index: 5;
     transition: height 0.3s ease;
-    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 0 2px rgba(0, 0, 0, 0.3);
 }
 
 .wire-connector {
     width: 8px;
     height: 8px;
-    background: radial-gradient(circle, #555560, #2a2a35);
+    background: radial-gradient(circle, var(--lamp-hi), var(--lamp-b));
     border-radius: 50%;
     margin: -2px auto 0;
     position: relative;
     z-index: 2;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* Lamp body */
 .lamp-body {
     width: 36px;
     height: 46px;
-    background: linear-gradient(180deg, #1e1e2e 0%, #151520 50%, #0d0d15 100%);
+    background: linear-gradient(180deg, var(--lamp-c) 0%, var(--lamp-d) 50%, var(--lamp-e) 100%);
     border-radius: 18px 18px 12px 12px;
     position: relative;
     margin: -2px auto 0;
     box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.5),
-        inset 0 1px 2px rgba(255, 255, 255, 0.03);
+        0 4px 15px rgba(0, 0, 0, 0.35),
+        inset 0 1px 2px rgba(255, 255, 255, 0.12);
     transition: all 0.4s ease;
     overflow: hidden;
 }
@@ -321,7 +367,7 @@ img {
     transform: translateX(-50%);
     width: 20px;
     height: 2px;
-    background: linear-gradient(to right, transparent, #3a3a50, transparent);
+    background: linear-gradient(to right, transparent, var(--lamp-accent), transparent);
     border-radius: 1px;
 }
 
@@ -332,7 +378,7 @@ img {
     transform: translate(-50%, -50%);
     width: 22px;
     height: 22px;
-    border: 1.5px solid rgba(255, 255, 255, 0.05);
+    border: 1.5px solid var(--lamp-ring);
     border-radius: 50%;
     transition: all 0.4s ease;
 }
@@ -344,7 +390,7 @@ img {
     transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), transparent);
+    background: radial-gradient(circle, var(--lamp-core), transparent);
     border-radius: 50%;
     transition: all 0.4s ease;
 }
@@ -356,7 +402,7 @@ img {
     left: 0;
     right: 0;
     height: 8px;
-    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.02));
+    background: linear-gradient(to bottom, transparent, var(--lamp-sheen));
     border-radius: 0 0 12px 12px;
 }
 
@@ -383,7 +429,7 @@ img {
     right: 8px;
     width: 1.5px;
     height: 32px;
-    background: linear-gradient(to bottom, #4a4a55, #2a2a35);
+    background: linear-gradient(to bottom, var(--lamp-tab-a), var(--lamp-tab-b));
     transition: transform 0.3s ease;
 }
 
@@ -395,18 +441,18 @@ img {
     transform: translateX(-50%);
     width: 8px;
     height: 8px;
-    background: radial-gradient(circle, #5a5a65, #3a3a45);
+    background: radial-gradient(circle, var(--lamp-tab-hi), var(--lamp-tab-b2));
     border-radius: 50%;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* ON state: futuristic glow */
 .lamp-container.on .lamp-body {
-    background: linear-gradient(180deg, #2a2a3e 0%, #1e1e2e 50%, #151520 100%);
+    background: linear-gradient(180deg, var(--lamp-on-a) 0%, var(--lamp-on-b) 50%, var(--lamp-on-c) 100%);
     box-shadow:
-        0 4px 20px rgba(100, 180, 255, 0.15),
-        0 0 40px rgba(100, 180, 255, 0.1),
-        inset 0 1px 2px rgba(255, 255, 255, 0.05);
+        0 4px 20px rgba(100, 180, 255, 0.2),
+        0 0 40px rgba(100, 180, 255, 0.12),
+        inset 0 1px 2px rgba(255, 255, 255, 0.08);
 }
 
 .lamp-container.on .led-ring {
@@ -427,7 +473,7 @@ img {
 }
 
 .lamp-container.on .pull-tab::after {
-    background: radial-gradient(circle, #7a7a85, #5a5a65);
+    background: radial-gradient(circle, var(--lamp-on-tab), var(--lamp-on-tab2));
     box-shadow: 0 0 8px rgba(100, 200, 255, 0.3);
 }
 
@@ -743,7 +789,7 @@ html.light-mode .room-light {
 
 .stats-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 clamp(20px, 4vw, 48px);
@@ -1402,6 +1448,19 @@ html.light-mode .room-light {
     color: var(--ink);
 }
 
+/* Stacked, tappable phone links — keeps both numbers visible on mobile */
+.contact-method .cm-phone {
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 3px 0;
+    transition: color 0.25s ease;
+}
+
+.contact-method .cm-phone:hover {
+    color: var(--accent);
+}
+
 .contact-form .form-group {
     margin-bottom: 26px;
 }
@@ -1530,39 +1589,72 @@ html.light-mode .room-light {
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+/* Backdrop overlay behind the mobile sidebar */
+.nav-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 989;
+    background: rgba(10, 9, 8, 0.55);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+html.light-mode .nav-overlay {
+    background: rgba(28, 24, 18, 0.4);
+}
+
+.nav-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
 @media (max-width: 900px) {
     .nav-menu {
         position: fixed;
-        top: 72px;
-        left: 0;
+        top: 0;
         right: 0;
+        bottom: 0;
+        width: min(320px, 86vw);
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+        justify-content: flex-start;
         gap: 0;
         background: var(--bg);
-        border-bottom: 1px solid var(--line);
-        padding: 12px 0 22px clamp(20px, 4vw, 48px);
-        transform: translateY(-110%);
-        transition: transform 0.35s ease;
-        z-index: 999;
+        border-left: 1px solid var(--line);
+        padding: 88px clamp(24px, 6vw, 40px) 40px;
+        transform: translateX(102%);
+        transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 992;
+        overflow-y: auto;
+        box-shadow: -30px 0 60px rgba(0, 0, 0, 0.35);
     }
 
     .nav-menu.active {
-        transform: translateY(0);
+        transform: translateX(0);
     }
 
     .nav-menu .nav-item {
         width: 100%;
+        border-bottom: 1px solid var(--line-soft);
+    }
+
+    .nav-menu .nav-item:last-child {
+        border-bottom: none;
     }
 
     .nav-link {
         display: block;
-        padding: 16px 0;
-        font-size: 13px;
+        padding: 18px 0;
+        font-size: 14px;
     }
 
     .nav-toggle {
         display: flex;
+        position: relative;
+        z-index: 993;
     }
 
     .hero-card {

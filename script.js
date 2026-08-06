@@ -104,35 +104,39 @@ function initReveal() {
 }
 
 // ============================================================
-// MOBILE NAVIGATION
+// MOBILE NAVIGATION — slide-in sidebar + backdrop overlay
 // ============================================================
 function initMobileMenu() {
     const toggle = document.getElementById('mobile-menu');
     const menu = document.querySelector('.nav-menu');
+    const overlay = document.getElementById('nav-overlay');
     if (!toggle || !menu) return;
 
-    toggle.addEventListener('click', () => {
-        const open = menu.classList.toggle('active');
+    const setOpen = (open) => {
+        menu.classList.toggle('active', open);
         toggle.classList.toggle('active', open);
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        if (overlay) overlay.classList.toggle('active', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    toggle.addEventListener('click', () => {
+        setOpen(!menu.classList.contains('active'));
     });
 
     // Close when a link is clicked
     menu.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', () => {
-            menu.classList.remove('active');
-            toggle.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-        });
+        link.addEventListener('click', () => setOpen(false));
     });
 
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-        if (!menu.contains(e.target) && !toggle.contains(e.target)) {
-            menu.classList.remove('active');
-            toggle.classList.remove('active');
-            toggle.setAttribute('aria-expanded', 'false');
-        }
+    // Close on backdrop click
+    if (overlay) {
+        overlay.addEventListener('click', () => setOpen(false));
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') setOpen(false);
     });
 }
 
