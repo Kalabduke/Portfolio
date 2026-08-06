@@ -26,6 +26,14 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // Apply saved theme before first paint (no flash)
+        try {
+            if (localStorage.getItem('theme') === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+        } catch (e) {}
+    </script>
 </head>
 
 <body>
@@ -42,6 +50,10 @@
                 <li class="nav-item"><a href="#cv" class="nav-link">CV</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light / dark mode" aria-pressed="false">
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+            </button>
             <div class="nav-toggle" id="mobile-menu" aria-label="Toggle menu">
                 <span class="bar"></span>
                 <span class="bar"></span>

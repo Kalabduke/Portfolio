@@ -283,6 +283,30 @@ function initCvButtons() {
 }
 
 // ============================================================
+// THEME TOGGLE — light / dark mode
+// ============================================================
+function initThemeToggle() {
+    const toggle = document.getElementById('theme-toggle');
+    if (!toggle) return;
+
+    const sync = () => {
+        const isLight = document.documentElement.classList.contains('light-mode');
+        toggle.setAttribute('aria-pressed', String(isLight));
+    };
+
+    toggle.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light-mode');
+        const isLight = document.documentElement.classList.contains('light-mode');
+        try {
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        } catch (e) {}
+        sync();
+    });
+
+    sync();
+}
+
+// ============================================================
 // BOOT
 // ============================================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -290,6 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initReveal();
     initMobileMenu();
     initNavbar();
+    initThemeToggle();
     initContactForm();
     initCvButtons();
 

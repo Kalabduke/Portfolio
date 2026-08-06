@@ -26,6 +26,17 @@
     --accent-ink: #0A0A0A;
     --card: rgba(242, 239, 233, 0.045);
 
+    /* Hero stays cinematic (light-on-dark over the photo) in both themes */
+    --hero-ink: #F2EFE9;
+    --hero-muted: #A7A197;
+    --hero-accent: #9ADBFF;
+    --hero-accent-ink: #0A0A0A;
+    --hero-fade: #0E0D0B;
+
+    /* Theme-aware surfaces */
+    --nav-bg: rgba(14, 13, 11, 0.88);
+    --scroll-thumb: #2A2722;
+
     /* Type */
     --display: 'Archivo', 'Inter', sans-serif;
     --body: 'Inter', sans-serif;
@@ -51,6 +62,37 @@ body {
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ============================================================
+   LIGHT MODE — warm paper editorial palette
+   Toggled via html.light-mode (head script + theme button)
+   ============================================================ */
+html.light-mode {
+    --bg: #F5F2EC;
+    --bg-2: #EFEBE2;
+    --bg-3: #E8E3D8;
+    --ink: #1C1812;
+    --muted: #5A544A;
+    --faint: #8A8377;
+    --line: rgba(28, 24, 18, 0.16);
+    --line-soft: rgba(28, 24, 18, 0.09);
+    --accent: #0E7CB8;
+    --accent-ink: #FFFFFF;
+    --card: rgba(28, 24, 18, 0.05);
+    --nav-bg: rgba(245, 242, 236, 0.88);
+    --scroll-thumb: #C6C0B2;
+}
+
+/* Smooth theme cross-fade for the main themed surfaces */
+html.light-mode body,
+html.light-mode .navbar,
+html.light-mode .section,
+html.light-mode .section--tint,
+html.light-mode .soft-chip,
+html.light-mode .btn-sharp {
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
 
 ::selection {
@@ -65,7 +107,7 @@ body {
     background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-    background: #2A2722;
+    background: var(--scroll-thumb);
     border-radius: 0;
 }
 
@@ -111,11 +153,11 @@ img {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(14, 13, 11, 0.88);
+    background: var(--nav-bg);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--line-soft);
-    transition: background 0.3s ease;
+    transition: background 0.5s ease, border-color 0.5s ease;
 }
 
 .nav-container {
@@ -179,6 +221,38 @@ img {
     width: 100%;
 }
 
+/* Theme toggle: light / dark mode */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-right: 14px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--ink);
+    cursor: pointer;
+    transition: border-color 0.25s ease, color 0.25s ease, background-color 0.5s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.theme-toggle svg {
+    width: 16px;
+    height: 16px;
+    display: block;
+}
+
+.theme-toggle .icon-moon { display: block; }
+.theme-toggle .icon-sun { display: none; }
+
+html.light-mode .theme-toggle .icon-moon { display: none; }
+html.light-mode .theme-toggle .icon-sun { display: block; }
+
 /* Hamburger: two dashes, editorial style */
 .nav-toggle {
     display: none;
@@ -234,7 +308,7 @@ img {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(180deg, rgba(14, 13, 11, 0.78) 0%, rgba(14, 13, 11, 0.15) 38%, rgba(14, 13, 11, 0.42) 72%, var(--bg) 100%),
+        linear-gradient(180deg, rgba(14, 13, 11, 0.78) 0%, rgba(14, 13, 11, 0.15) 38%, rgba(14, 13, 11, 0.42) 72%, var(--hero-fade) 100%),
         radial-gradient(120% 90% at 20% 20%, transparent 40%, rgba(14, 13, 11, 0.55) 100%);
 }
 
@@ -256,7 +330,7 @@ img {
     content: '';
     width: 44px;
     height: 1px;
-    background: var(--accent);
+    background: var(--hero-accent);
 }
 
 .hero-title {
@@ -275,19 +349,19 @@ img {
 
 .hero-title .line--outline {
     color: transparent;
-    -webkit-text-stroke: 1.5px var(--ink);
+    -webkit-text-stroke: 1.5px var(--hero-ink);
 }
 
 .hero-title .line--outline em {
     font-style: normal;
     -webkit-text-stroke: 0;
-    color: var(--accent);
+    color: var(--hero-accent);
 }
 
 .hero-lead {
     margin-top: 28px;
     max-width: 460px;
-    color: var(--muted);
+    color: var(--hero-muted);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -305,7 +379,7 @@ img {
     display: inline-flex;
     align-items: center;
     gap: 16px;
-    color: var(--ink);
+    color: var(--hero-ink);
     transition: color 0.25s ease;
 }
 
@@ -322,7 +396,7 @@ img {
 .watch-btn .ring svg {
     width: 16px;
     height: 16px;
-    fill: var(--ink);
+    fill: var(--hero-ink);
     margin-left: 2px;
     transition: fill 0.3s ease;
 }
@@ -336,13 +410,13 @@ img {
 }
 
 .watch-btn:hover .ring {
-    border-color: var(--accent);
-    background: var(--accent);
+    border-color: var(--hero-accent);
+    background: var(--hero-accent);
     transform: scale(1.05);
 }
 
 .watch-btn:hover .ring svg {
-    fill: var(--accent-ink);
+    fill: var(--hero-accent-ink);
 }
 
 /* Sharp-corner accent button */
@@ -407,7 +481,7 @@ img {
 }
 
 .hero-card p {
-    color: var(--muted);
+    color: var(--hero-muted);
     font-size: 13px;
     line-height: 1.7;
 }
@@ -420,7 +494,7 @@ img {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.26em;
-    color: var(--accent);
+    color: var(--hero-accent);
 }
 
 /* Stats overlay: bottom */
@@ -459,6 +533,7 @@ img {
     font-weight: 900;
     line-height: 1;
     display: block;
+    color: var(--hero-ink);
 }
 
 .stat-label {
@@ -469,7 +544,7 @@ img {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.28em;
-    color: var(--muted);
+    color: var(--hero-muted);
 }
 
 /* Hero socials: bottom left */
@@ -488,12 +563,12 @@ img {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.26em;
-    color: var(--muted);
+    color: var(--hero-muted);
     transition: color 0.25s ease;
 }
 
 .hero-social a:hover {
-    color: var(--accent);
+    color: var(--hero-accent);
 }
 
 /* Right pagination rail */
@@ -513,7 +588,7 @@ img {
     font-family: var(--display);
     font-size: 10px;
     font-weight: 700;
-    color: var(--muted);
+    color: var(--hero-muted);
     letter-spacing: 0.2em;
 }
 
