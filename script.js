@@ -12,13 +12,25 @@ window.FORMSPREE_ENDPOINT = FORMSPREE_ENDPOINT;
 // SKILLS DATA — single source of truth
 // ============================================================
 const SKILLS_DATA = [
-    { name: 'JavaScript',  level: 7, total: 10 },
-    { name: 'HTML / CSS',  level: 8, total: 10 },
-    { name: 'React',       level: 4, total: 10 },
-    { name: 'Kotlin',      level: 5, total: 10 },
-    { name: 'Jetpack Compose', level: 4, total: 10 },
+    { name: 'Odoo ERP',    level: 7, total: 10 },
     { name: 'Python',      level: 6, total: 10 },
+    { name: 'JavaScript',  level: 7, total: 10 },
+    { name: 'Next.js',     level: 6, total: 10 },
+    { name: 'HTML / CSS',  level: 8, total: 10 },
+    { name: 'PostgreSQL',  level: 6, total: 10 },
     { name: 'Linux (Ubuntu)', level: 6, total: 10 },
+    { name: 'Android / Kotlin', level: 5, total: 10 },
+];
+
+// Soft skills — shown as chips under the technical bars
+const SOFT_SKILLS = [
+    'Communication',
+    'Problem Solving',
+    'Teamwork',
+    'Adaptability',
+    'Time Management',
+    'Attention to Detail',
+    'Leadership',
 ];
 
 // ============================================================
@@ -30,8 +42,6 @@ function renderSkillDots() {
     container.innerHTML = '';
 
     SKILLS_DATA.forEach(skill => {
-        const pct = Math.round((skill.level / skill.total) * 100);
-
         const row = document.createElement('div');
         row.className = 'skill-row';
 
@@ -47,15 +57,30 @@ function renderSkillDots() {
             dots.appendChild(dot);
         }
 
-        const pctEl = document.createElement('span');
-        pctEl.className = 'skill-pct';
-        pctEl.textContent = pct + '%';
-
         row.appendChild(name);
         row.appendChild(dots);
-        row.appendChild(pctEl);
         container.appendChild(row);
     });
+
+    // Soft skills block below the bars
+    const softWrap = document.createElement('div');
+    softWrap.className = 'soft-skills';
+
+    const softLabel = document.createElement('div');
+    softLabel.className = 'soft-skills-label';
+    softLabel.textContent = 'Soft Skills';
+    softWrap.appendChild(softLabel);
+
+    const softList = document.createElement('div');
+    softList.className = 'soft-skills-list';
+    SOFT_SKILLS.forEach(skill => {
+        const chip = document.createElement('span');
+        chip.className = 'soft-chip';
+        chip.textContent = skill;
+        softList.appendChild(chip);
+    });
+    softWrap.appendChild(softList);
+    container.appendChild(softWrap);
 }
 
 // ============================================================
