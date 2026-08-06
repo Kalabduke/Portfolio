@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projects portfolio of Kaleab Abduke - Frontend & Android Developer. Projects coming soon.">
+    <meta name="description" content="Projects portfolio of Kaleab Abduke - Frontend & Android Developer. Featuring Pulse, a realtime status-sharing and messaging app.">
     <title>Projects - Kaleab Abduke Abagaro</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -64,27 +64,13 @@
         }
 
         .projects-container {
-            max-width: 700px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: var(--spacing-2xl) var(--spacing-md);
-            text-align: center;
         }
 
-        .coming-soon-text {
-            font-size: var(--font-size-lg);
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .coming-soon-subtle {
-            font-size: var(--font-size-sm);
-            color: var(--text-light);
-        }
-
-        .coming-soon-subtle a {
-            color: var(--primary-color);
-            text-decoration: underline;
+        .projects-main .projects-grid {
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
         }
 
         @media (max-width: 768px) {
@@ -121,19 +107,60 @@
     <section class="projects-hero">
         <div class="projects-hero-content">
             <h1>Projects</h1>
-            <p>A collection of my work — coming soon.</p>
+            <p>A selection of things I've designed, built and shipped.</p>
         </div>
     </section>
 
     <section class="projects-main">
         <div class="projects-container">
-            <p class="coming-soon-text">
-                I'm currently putting together the projects I've been working on.
-                They'll be posted here once they're ready — stay tuned.
-            </p>
-            <p class="coming-soon-subtle">
-                Want to know more about my work? <a href="contact.html">Get in touch</a>.
-            </p>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-heart-pulse project-icon"></i>
+                        <div class="project-links">
+                            <a href="https://pulse-status.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                            <a href="https://github.com/Kalabduke/Pulse" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Pulse — Realtime Status & Messaging App</h3>
+                    <p class="project-description">A realtime social app to share emoji, photo &amp; video status updates and chat with friends. DMs come with read receipts, reactions, live typing and in-chat search — all synced instantly via Supabase Realtime. Ships as a PWA and a native Android APK with Firebase push notifications that work even when the app is closed.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Supabase</span>
+                        <span class="project-tag">Realtime</span>
+                        <span class="project-tag">Vercel</span>
+                        <span class="project-tag">Capacitor</span>
+                        <span class="project-tag">FCM Push</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-header">
+                        <i class="fas fa-network-wired project-icon"></i>
+                        <div class="project-links">
+                            <a href="https://github.com/Kalabduke/network-analysis" target="_blank" rel="noopener noreferrer" aria-label="View on GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <h3 class="project-title">Network Traffic & Log Analysis Pipeline</h3>
+                    <p class="project-description">Real-time data pipeline for capturing, processing, and analyzing network traffic and system logs. Built during internship at INSA using the ELK stack, Kafka, and Spark.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Apache Kafka</span>
+                        <span class="project-tag">Apache Spark</span>
+                        <span class="project-tag">Elasticsearch</span>
+                        <span class="project-tag">Kibana</span>
+                        <span class="project-tag">Filebeat</span>
+                    </div>
+                </div>
+
+                <div class="project-card project-card-coming-soon">
+                    <div class="project-card-header">
+                        <i class="fas fa-clock project-icon"></i>
+                    </div>
+                    <h3 class="project-title">More Coming Soon</h3>
+                    <p class="project-description">Stay tuned — more projects on the way.</p>
+                </div>
+            </div>
         </div>
     </section>
 
