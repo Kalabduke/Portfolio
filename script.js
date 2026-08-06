@@ -12,13 +12,13 @@ window.FORMSPREE_ENDPOINT = FORMSPREE_ENDPOINT;
 // SKILLS DATA: single source of truth
 // ============================================================
 const SKILLS_DATA = [
-    { name: 'Odoo ERP',    level: 7, total: 10 },
+    { name: 'Odoo ERP',    level: 5, total: 10 },
     { name: 'Python',      level: 6, total: 10 },
     { name: 'JavaScript',  level: 7, total: 10 },
     { name: 'Next.js',     level: 6, total: 10 },
     { name: 'HTML / CSS',  level: 8, total: 10 },
     { name: 'PostgreSQL',  level: 6, total: 10 },
-    { name: 'Linux (Ubuntu)', level: 6, total: 10 },
+    { name: 'Linux (Ubuntu)', level: 7, total: 10 },
     { name: 'Android / Kotlin', level: 5, total: 10 },
 ];
 
