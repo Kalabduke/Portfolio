@@ -283,24 +283,92 @@ function initCvButtons() {
 }
 
 // ============================================================
-// THEME TOGGLE — light / dark mode
+// THEME LAMP — light / dark mode toggle
+// Tap, click or pull the lamp to switch themes
 // ============================================================
 function initThemeToggle() {
-    const toggle = document.getElementById('theme-toggle');
-    if (!toggle) return;
+    const lamp = document.getElementById('theme-toggle');
+    if (!lamp) return;
+
+    let isOn = document.documentElement.classList.contains('light-mode');
+    let isDragging = false;
+    let startY = 0;
 
     const sync = () => {
-        const isLight = document.documentElement.classList.contains('light-mode');
-        toggle.setAttribute('aria-pressed', String(isLight));
+        lamp.classList.toggle('on', isOn);
+        lamp.setAttribute('aria-pressed', String(isOn));
     };
 
-    toggle.addEventListener('click', () => {
-        document.documentElement.classList.toggle('light-mode');
-        const isLight = document.documentElement.classList.contains('light-mode');
+    const toggleLight = () => {
+        isOn = !isOn;
+        document.documentElement.classList.toggle('light-mode', isOn);
         try {
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            localStorage.setItem('theme', isOn ? 'light' : 'dark');
         } catch (e) {}
         sync();
+    };
+
+    const pullThenToggle = () => {
+        lamp.classList.add('pulling');
+        setTimeout(() => {
+            lamp.classList.remove('pulling');
+            toggleLight();
+        }, 300);
+    };
+
+    // Click / tap
+    lamp.addEventListener('click', (e) => {
+        if (!isDragging) pullThenToggle();
+    });
+
+    // Keyboard (role="button")
+    lamp.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            pullThenToggle();
+        }
+    });
+
+    // Mouse drag (pull down)
+    lamp.addEventListener('mousedown', (e) => {
+        isDragging = false;
+        startY = e.clientY;
+    });
+
+    lamp.addEventListener('mousemove', (e) => {
+        if (e.buttons === 1 && Math.abs(e.clientY - startY) > 8) {
+            isDragging = true;
+            lamp.classList.add('pulling');
+        }
+    });
+
+    lamp.addEventListener('mouseup', (e) => {
+        if (isDragging) {
+            lamp.classList.remove('pulling');
+            toggleLight();
+            setTimeout(() => { isDragging = false; }, 100);
+        }
+    });
+
+    // Touch drag
+    lamp.addEventListener('touchstart', (e) => {
+        isDragging = false;
+        startY = e.touches[0].clientY;
+    }, { passive: true });
+
+    lamp.addEventListener('touchmove', (e) => {
+        if (Math.abs(e.touches[0].clientY - startY) > 8) {
+            isDragging = true;
+            lamp.classList.add('pulling');
+        }
+    }, { passive: true });
+
+    lamp.addEventListener('touchend', () => {
+        if (isDragging) {
+            lamp.classList.remove('pulling');
+            toggleLight();
+            setTimeout(() => { isDragging = false; }, 100);
+        }
     });
 
     sync();

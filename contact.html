@@ -25,6 +25,8 @@
 
 <body>
 
+    <div class="room-light" aria-hidden="true"></div>
+
     <nav class="navbar">
         <div class="nav-container container">
             <div class="nav-logo">
@@ -36,10 +38,17 @@
                 <li class="nav-item"><a href="index.html#cv" class="nav-link">CV</a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link active">Contact</a></li>
             </ul>
-            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light / dark mode" aria-pressed="false">
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
-            </button>
+            <div class="lamp-container" id="theme-toggle" role="button" tabindex="0" aria-label="Toggle light / dark mode" aria-pressed="false">
+                <div class="ceiling-mount"></div>
+                <div class="wire"></div>
+                <div class="wire-connector"></div>
+                <div class="lamp-body">
+                    <div class="led-ring"></div>
+                    <div class="core-light"></div>
+                    <div class="light-beam"></div>
+                    <div class="pull-tab"></div>
+                </div>
+            </div>
             <div class="nav-toggle" id="mobile-menu" aria-label="Toggle menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
