@@ -1,5 +1,5 @@
 // ============================================================
-// CONFIGURATION — update these before deploying
+// CONFIGURATION: update these before deploying
 // ============================================================
 
 // Formspree: sign up at https://formspree.io → New form → copy the ID
@@ -9,7 +9,7 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/' + FORMSPREE_FORM_ID;
 window.FORMSPREE_ENDPOINT = FORMSPREE_ENDPOINT;
 
 // ============================================================
-// SKILLS DATA — single source of truth
+// SKILLS DATA: single source of truth
 // ============================================================
 const SKILLS_DATA = [
     { name: 'Odoo ERP',    level: 7, total: 10 },
@@ -22,7 +22,7 @@ const SKILLS_DATA = [
     { name: 'Android / Kotlin', level: 5, total: 10 },
 ];
 
-// Soft skills — shown as chips under the technical bars
+// Soft skills: shown as chips under the technical bars
 const SOFT_SKILLS = [
     'Communication',
     'Problem Solving',
@@ -34,7 +34,7 @@ const SOFT_SKILLS = [
 ];
 
 // ============================================================
-// RENDER SKILLS — editorial rows
+// RENDER SKILLS: editorial rows
 // ============================================================
 function renderSkillDots() {
     const container = document.getElementById('skill-dots-container');

@@ -1,5 +1,5 @@
 /* ============================================================
-   KALEAB ABDUKE — PORTFOLIO
+   KALEAB ABDUKE | PORTFOLIO
    Editorial design language: sharp corners, hairline rules,
    huge uppercase display type, one accent. Inspired by bold
    magazine / showcase layouts. No glass, no glow, no pills.
@@ -179,7 +179,7 @@ img {
     width: 100%;
 }
 
-/* Hamburger — two dashes, editorial style */
+/* Hamburger: two dashes, editorial style */
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -383,7 +383,7 @@ img {
     background: transparent;
 }
 
-/* Hero info card — bottom right, translucent with border */
+/* Hero info card: bottom right, translucent with border */
 .hero-card {
     position: absolute;
     right: clamp(20px, 4vw, 48px);
@@ -423,7 +423,7 @@ img {
     color: var(--accent);
 }
 
-/* Stats overlay — bottom */
+/* Stats overlay: bottom */
 .hero-stats {
     position: absolute;
     left: 0;
@@ -472,7 +472,7 @@ img {
     color: var(--muted);
 }
 
-/* Hero socials — bottom left */
+/* Hero socials: bottom left */
 .hero-social {
     position: absolute;
     left: clamp(20px, 4vw, 48px);
@@ -665,7 +665,7 @@ img {
 }
 
 /* ============================================================
-   SKILLS — editorial list
+   SKILLS | editorial list
    ============================================================ */
 .skill-row {
     display: flex;
@@ -712,7 +712,7 @@ img {
     background: var(--accent);
 }
 
-/* Soft skills — chip block under the technical bars */
+/* Soft skills: chip block under the technical bars */
 .soft-skills {
     margin-top: clamp(32px, 4vw, 48px);
     padding-top: clamp(24px, 3vw, 36px);
@@ -781,7 +781,7 @@ img {
 }
 
 /* ============================================================
-   PROJECTS — numbered editorial rows
+   PROJECTS | numbered editorial rows
    ============================================================ */
 .project-row {
     display: grid;
