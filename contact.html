@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Contact Kaleab Abduke, Odoo Developer based in Addis Ababa, Ethiopia.">
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sosaportfolio.netlify.app/contact.html">
+    <meta property="og:site_name" content="Kaleab Abduke">
+    <meta property="og:title" content="Contact | Kaleab Abduke - Odoo Developer">
+    <meta property="og:description"
+        content="Get in touch with Kaleab Abduke, Odoo Developer. Available for opportunities, collaborations and IT challenges.">
+    <meta property="og:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact | Kaleab Abduke">
+    <meta name="twitter:description" content="Get in touch with Kaleab Abduke, Odoo Developer.">
+    <meta name="twitter:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
+    <meta name="theme-color" content="#0E0D0B">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F2EC">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
     <title>Contact | Kaleab Abduke</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +41,7 @@
 
 <body>
 
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <div class="room-light" aria-hidden="true"></div>
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
@@ -70,7 +87,10 @@
 
     <section class="section">
         <div class="container">
-            <a href="mailto:kalabduke@gmail.com" class="contact-email reveal">kalabduke@gmail.com</a>
+            <div class="contact-email-row reveal">
+                <a href="mailto:kalabduke@gmail.com" class="contact-email">kalabduke@gmail.com</a>
+                <button type="button" class="copy-email-btn" id="copy-email-btn" aria-label="Copy email address">Copy</button>
+            </div>
             <div class="contact-grid">
                 <div class="reveal">
                     <div class="contact-method">

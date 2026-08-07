@@ -5,18 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Portfolio of Kaleab Abduke - Frontend & Android Developer. Computer Science graduate passionate about frontend and mobile app development.">
+        content="Kaleab Abduke, Odoo Developer at Temer Real Estate. Configuring, customising and automating ERP workflows. Building realtime apps like Pulse. Based in Addis Ababa, working worldwide.">
     <meta name="keywords"
-        content="Kaleab Abduke, Frontend Developer, Android Developer, React, Kotlin, Jetpack Compose, Portfolio">
+        content="Kaleab Abduke, Odoo Developer, Odoo ERP, Python, Supabase, Realtime, Android, Portfolio">
     <meta name="author" content="Kaleab Abduke">
     <!-- Open Graph / Social Media Preview -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Kaleab Abduke - Frontend & Android Developer">
+    <meta property="og:url" content="https://sosaportfolio.netlify.app/">
+    <meta property="og:site_name" content="Kaleab Abduke">
+    <meta property="og:title" content="Kaleab Abduke - Odoo Developer">
     <meta property="og:description"
-        content="Computer Science graduate passionate about frontend and mobile app development. Real projects in React, Kotlin, and Jetpack Compose.">
+        content="Odoo developer at Temer Real Estate. Configuring, customising and automating ERP workflows, plus building realtime apps like Pulse (PWA + Android). Based in Addis Ababa, working worldwide.">
+    <meta property="og:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Kaleab Abduke - Portfolio">
-    <meta name="twitter:description" content="Frontend & Android Developer | React, Kotlin, Jetpack Compose">
+    <meta name="twitter:title" content="Kaleab Abduke - Odoo Developer">
+    <meta name="twitter:description" content="Odoo ERP developer, realtime apps, and network data pipelines. Based in Addis Ababa, working worldwide.">
+    <meta name="twitter:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
+    <meta name="theme-color" content="#0E0D0B">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F2EC">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
     <title>Kaleab Abduke | Odoo Developer</title>
     <link rel="icon" type="image/svg+xml"
         href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>K.</text></svg>">
@@ -38,6 +48,7 @@
 
 <body>
 
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <div class="room-light" aria-hidden="true"></div>
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
@@ -46,6 +57,9 @@
         <div class="nav-container container">
             <div class="nav-logo">
                 <span class="logo-text">Kaleab<em>.</em></span>
+                <span class="open-to-work" title="Open to work">
+                    <i class="otw-dot" aria-hidden="true"></i><span class="otw-label">Open to work</span>
+                </span>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -74,7 +88,12 @@
     <!-- Hero -->
     <header class="hero">
         <div class="hero-bg">
-            <img src="assets/background/Screenshot From 2026-03-08 13-34-40.png" alt="Kaleab Abduke, Odoo Developer at Temer Real Estate" aria-hidden="true">
+            <picture>
+                <source srcset="assets/background/hero.webp" type="image/webp">
+                <img src="assets/background/Screenshot From 2026-03-08 13-34-40.png"
+                    alt="Kaleab Abduke, Odoo Developer at Temer Real Estate"
+                    aria-hidden="true" fetchpriority="high">
+            </picture>
         </div>
 
         <div class="hero-inner container">
@@ -108,11 +127,19 @@
             <span class="card-tag">Addis Ababa, Ethiopia</span>
         </div>
 
-        <!-- Stats overlay -->
+        <!-- Stats overlay (count-up) -->
         <div class="hero-stats">
             <div class="stats-row">
                 <div class="stat">
-                    <span class="stat-num">2025</span>
+                    <span class="stat-num" data-count="2">0</span>
+                    <span class="stat-label">Apps Shipped</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num" data-count="4">0</span>
+                    <span class="stat-label">Roles &amp; Projects</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num" data-count="2025">0</span>
                     <span class="stat-label">CS Graduate</span>
                 </div>
             </div>
@@ -132,6 +159,14 @@
             <span>04</span>
         </div>
     </header>
+
+    <!-- Marquee ticker -->
+    <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+            <span>Odoo ERP</span><i>·</i><span>Python</span><i>·</i><span>JavaScript</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Linux</span><i>·</i><span>Next.js</span><i>·</i><span>Realtime</span><i>·</i><span>Android</span><i>·</i>
+            <span>Odoo ERP</span><i>·</i><span>Python</span><i>·</i><span>JavaScript</span><i>·</i><span>Supabase</span><i>·</i><span>PostgreSQL</span><i>·</i><span>Linux</span><i>·</i><span>Next.js</span><i>·</i><span>Realtime</span><i>·</i><span>Android</span><i>·</i>
+        </div>
+    </div>
 
     <!-- About -->
     <section id="about" class="section">
@@ -174,8 +209,9 @@
                     </div>
                 </div>
                 <div class="about-photo reveal">
-                    <div class="frame">
-                        <img src="assets/314D7885 (Edited).JPG" alt="Portrait of Kaleab Abduke">
+                    <div class="frame" data-tilt>
+                        <img src="assets/314D7885 (Edited).JPG" alt="Portrait of Kaleab Abduke"
+                            loading="lazy" width="800" height="1000">
                     </div>
                     <div class="photo-caption">Kaleab Abduke <em>·</em> Addis Ababa</div>
                 </div>
@@ -201,7 +237,7 @@
             </div>
 
             <!-- Pulse -->
-            <article class="project-row reveal">
+            <article class="project-row reveal" data-tilt>
                 <div class="proj-num">01</div>
                 <div class="proj-body">
                     <h3 class="proj-title">Pulse · Realtime Status &amp; Messaging</h3>
@@ -230,7 +266,7 @@
             </article>
 
             <!-- Network pipeline -->
-            <article class="project-row reveal">
+            <article class="project-row reveal" data-tilt>
                 <div class="proj-num">02</div>
                 <div class="proj-body">
                     <h3 class="proj-title">Network Traffic &amp; Log Analysis</h3>
@@ -253,7 +289,7 @@
             </article>
 
             <!-- Coming soon -->
-            <article class="project-row reveal">
+            <article class="project-row reveal" data-tilt>
                 <div class="proj-num">03</div>
                 <div class="proj-body">
                     <h3 class="proj-title">More Coming Soon</h3>
@@ -380,7 +416,10 @@
             <div class="sec-head reveal">
                 <h2 class="sec-title">Contact</h2>
             </div>
-            <a href="mailto:kalabduke@gmail.com" class="contact-email reveal">kalabduke@gmail.com</a>
+            <div class="contact-email-row reveal">
+                <a href="mailto:kalabduke@gmail.com" class="contact-email">kalabduke@gmail.com</a>
+                <button type="button" class="copy-email-btn" id="copy-email-btn" aria-label="Copy email address">Copy</button>
+            </div>
             <div class="contact-grid">
                 <div class="reveal">
                     <div class="contact-method">

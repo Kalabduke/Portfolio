@@ -43,7 +43,8 @@ function renderSkillDots() {
 
     SKILLS_DATA.forEach(skill => {
         const row = document.createElement('div');
-        row.className = 'skill-row';
+        row.className = 'skill-row reveal';
+        row.setAttribute('data-level', `${skill.level}/${skill.total}`);
 
         const name = document.createElement('span');
         name.className = 'skill-name';
@@ -53,7 +54,8 @@ function renderSkillDots() {
         dots.className = 'skill-dots';
         for (let i = 0; i < skill.total; i++) {
             const dot = document.createElement('i');
-            if (i < skill.level) dot.classList.add('on');
+            dot.style.setProperty('--i', i);
+            if (i < skill.level) dot.dataset.fill = '1'; // lit up with stagger by initSkillStagger
             dots.appendChild(dot);
         }
 
@@ -287,6 +289,204 @@ function initCvButtons() {
 }
 
 // ============================================================
+// MODERN INTERACTIONS — scroll progress, scrollspy, copy email,
+// custom cursor, parallax, count-up, 3D tilt, view transitions
+// ============================================================
+
+const prefersReducedMotion = () =>
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Skill dots: stagger-fill when the row scrolls into view
+function initSkillStagger() {
+    const rows = [...document.querySelectorAll('.skill-row')];
+    if (!rows.length) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const dots = entry.target.querySelectorAll('.skill-dots i');
+            dots.forEach((dot, i) => {
+                if (dot.dataset.fill === '1') {
+                    setTimeout(() => dot.classList.add('on'), i * 40);
+                }
+            });
+            observer.unobserve(entry.target);
+        });
+    }, { threshold: 0.4 });
+    rows.forEach(r => observer.observe(r));
+}
+
+// Hairline scroll progress bar
+function initScrollProgress() {
+    const bar = document.getElementById('scroll-progress');
+    if (!bar) return;
+    const update = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const p = max > 0 ? window.scrollY / max : 0;
+        bar.style.transform = `scaleX(${p})`;
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+}
+
+// Scrollspy — highlight the active nav link while scrolling
+function initScrollspy() {
+    const links = [...document.querySelectorAll('.nav-link[href^="#"]')];
+    if (!links.length) return;
+    const sections = links
+        .map(l => document.querySelector(l.getAttribute('href')))
+        .filter(Boolean);
+    if (!sections.length) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const id = '#' + entry.target.id;
+            links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === id));
+        });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => observer.observe(s));
+}
+
+// Copy email to clipboard
+function initCopyEmail() {
+    const btn = document.getElementById('copy-email-btn');
+    if (!btn) return;
+    btn.addEventListener('click', async () => {
+        try {
+            await navigator.clipboard.writeText('kalabduke@gmail.com');
+            showNotification('Email copied to clipboard', 'success');
+        } catch (err) {
+            showNotification('Could not copy. Email me directly instead.', 'error');
+        }
+    });
+}
+
+// Custom cursor — dot + ring, only on desktop hover-capable pointers
+function initCustomCursor() {
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover || prefersReducedMotion()) return;
+
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    const ring = document.createElement('div');
+    ring.className = 'cursor-ring';
+    document.body.appendChild(dot);
+    document.body.appendChild(ring);
+    document.documentElement.classList.add('has-cursor');
+
+    let mx = -100, my = -100, rx = -100, ry = -100, raf = null;
+    const interactive = 'a, button, .project-row, .skill-row, .soft-chip, .proj-links a, .contact-method, .copy-email-btn, .watch-btn, .btn-sharp';
+
+    const loop = () => {
+        rx += (mx - rx) * 0.16;
+        ry += (my - ry) * 0.16;
+        dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%, -50%)`;
+        ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%, -50%)`;
+        raf = requestAnimationFrame(loop);
+    };
+
+    window.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+        if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+
+    document.addEventListener('mouseover', (e) => {
+        ring.classList.toggle('is-hover', !!e.target.closest(interactive));
+    });
+}
+
+// Hero parallax — title lines + background drift on scroll
+function initParallax() {
+    const hero = document.querySelector('.hero');
+    if (!hero || prefersReducedMotion()) return;
+    const lines = hero.querySelectorAll('.hero-title .line');
+    const bg = hero.querySelector('.hero-bg');
+    if (!lines.length && !bg) return;
+    let ticking = false;
+
+    const update = () => {
+        const rect = hero.getBoundingClientRect();
+        const progress = Math.min(Math.max(-rect.top, 0), rect.height);
+        lines.forEach((line, i) => {
+            line.style.transform = `translateY(${progress * (0.08 + i * 0.06)}px)`;
+        });
+        if (bg) {
+            bg.style.transform = `translateY(${progress * 0.12}px) scale(1.02)`;
+        }
+        ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            ticking = true;
+            requestAnimationFrame(update);
+        }
+    }, { passive: true });
+    update();
+}
+
+// Count-up stats
+function initCountUp() {
+    const nums = [...document.querySelectorAll('[data-count]')];
+    if (!nums.length) return;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10);
+            observer.unobserve(el);
+            if (prefersReducedMotion()) {
+                el.textContent = target;
+                return;
+            }
+            const duration = 1200;
+            const start = performance.now();
+            const step = (now) => {
+                const t = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - t, 3);
+                el.textContent = Math.round(target * eased);
+                if (t < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+        });
+    }, { threshold: 0.4 });
+    nums.forEach(n => observer.observe(n));
+}
+
+// Subtle 3D tilt on [data-tilt] targets
+function initTilt() {
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!canHover || prefersReducedMotion()) return;
+    document.querySelectorAll('[data-tilt]').forEach(el => {
+        const max = 3;
+        el.addEventListener('mousemove', (e) => {
+            const r = el.getBoundingClientRect();
+            const px = (e.clientX - r.left) / r.width - 0.5;
+            const py = (e.clientY - r.top) / r.height - 0.5;
+            el.style.transform = `perspective(900px) rotateX(${(-py * max).toFixed(2)}deg) rotateY(${(px * max).toFixed(2)}deg)`;
+        });
+        el.addEventListener('mouseleave', () => {
+            el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+        });
+    });
+}
+
+// View Transitions API — cross-page fade between internal pages
+function initViewTransitions() {
+    if (!document.startViewTransition || prefersReducedMotion()) return;
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href]');
+        if (!link) return;
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank') return;
+        const url = new URL(href, location.href);
+        if (url.origin !== location.origin) return;
+        e.preventDefault();
+        document.startViewTransition(() => { location.href = url.href; });
+    });
+}
+
+// ============================================================
 // THEME LAMP — light / dark mode toggle
 // Tap, click or pull the lamp to switch themes
 // ============================================================
@@ -309,6 +509,10 @@ function initThemeToggle() {
         try {
             localStorage.setItem('theme', isOn ? 'light' : 'dark');
         } catch (e) {}
+        // Keep the browser chrome theme in sync with the lamp
+        document.querySelectorAll('meta[name="theme-color"]').forEach(m => {
+            m.setAttribute('content', isOn ? '#F5F2EC' : '#0E0D0B');
+        });
         sync();
     };
 
@@ -389,6 +593,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
     initContactForm();
     initCvButtons();
+    initScrollProgress();
+    initSkillStagger();
+    initScrollspy();
+    initCopyEmail();
+    initCustomCursor();
+    initParallax();
+    initCountUp();
+    initTilt();
+    initViewTransitions();
 
     const year = document.getElementById('current-year');
     if (year) year.textContent = new Date().getFullYear();

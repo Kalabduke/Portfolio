@@ -6,6 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Projects by Kaleab Abduke, Odoo Developer. Featuring Pulse, a realtime status-sharing and messaging app, and a network traffic analysis pipeline.">
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sosaportfolio.netlify.app/projects.html">
+    <meta property="og:site_name" content="Kaleab Abduke">
+    <meta property="og:title" content="Projects | Kaleab Abduke - Odoo Developer">
+    <meta property="og:description"
+        content="Pulse, a realtime status-sharing and messaging app (PWA + Android), and a network traffic analysis pipeline.">
+    <meta property="og:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Projects | Kaleab Abduke">
+    <meta name="twitter:description" content="Pulse, a realtime status-sharing and messaging app, and a network traffic analysis pipeline.">
+    <meta name="twitter:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
+    <meta name="theme-color" content="#0E0D0B">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F2EC">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
     <title>Projects | Kaleab Abduke</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +41,7 @@
 
 <body>
 
+    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
     <div class="room-light" aria-hidden="true"></div>
     <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
@@ -71,7 +88,7 @@
     <section class="section">
         <div class="container">
             <!-- Pulse -->
-            <article class="project-row reveal">
+            <article class="project-row reveal" data-tilt>
                 <div class="proj-num">01</div>
                 <div class="proj-body">
                     <h3 class="proj-title">Pulse · Realtime Status &amp; Messaging</h3>
@@ -100,7 +117,7 @@
             </article>
 
             <!-- Network pipeline -->
-            <article class="project-row reveal">
+            <article class="project-row reveal" data-tilt>
                 <div class="proj-num">02</div>
                 <div class="proj-body">
                     <h3 class="proj-title">Network Traffic &amp; Log Analysis</h3>
@@ -123,7 +140,7 @@
             </article>
 
             <!-- Coming soon -->
-            <article class="project-row reveal">
+            <article class="project-row reveal" data-tilt>
                 <div class="proj-num">03</div>
                 <div class="proj-body">
                     <h3 class="proj-title">More Coming Soon</h3>
