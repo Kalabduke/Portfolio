@@ -734,46 +734,6 @@ html.light-mode .room-light {
     background: transparent;
 }
 
-/* Hero info card: bottom right, translucent with border */
-.hero-card {
-    position: absolute;
-    right: clamp(20px, 4vw, 48px);
-    bottom: 130px;
-    z-index: 2;
-    width: min(360px, 88vw);
-    background: rgba(14, 13, 11, 0.72);
-    border: 1px solid var(--line);
-    padding: 26px 28px;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-}
-
-.hero-card h3 {
-    font-family: var(--display);
-    font-size: 15px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-bottom: 10px;
-}
-
-.hero-card p {
-    color: var(--hero-muted);
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.hero-card .card-tag {
-    display: inline-block;
-    margin-top: 14px;
-    font-family: var(--display);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.26em;
-    color: var(--hero-accent);
-}
-
 /* Stats overlay: bottom */
 .hero-stats {
     position: absolute;
@@ -789,7 +749,7 @@ html.light-mode .room-light {
 
 .stats-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     max-width: 1240px;
     margin: 0 auto;
     padding: 0 clamp(20px, 4vw, 48px);
@@ -1651,15 +1611,6 @@ html.light-mode .nav-overlay {
 
     .nav-toggle {
         display: none;
-    }
-
-    .hero-card {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        width: 100%;
-        margin-top: 34px;
-        max-width: 480px;
     }
 
     .hero-social {
