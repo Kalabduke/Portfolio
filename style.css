@@ -593,7 +593,7 @@ html.light-mode .room-light {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding-bottom: 150px;
+    padding-bottom: 210px;
 }
 
 .hero-kicker {
@@ -694,6 +694,20 @@ html.light-mode .room-light {
 
 .watch-btn:hover .ring svg {
     fill: var(--hero-accent-ink);
+}
+
+/* SignLang variant: stroke-based hand icon */
+.watch-btn--sign .ring svg {
+    fill: none;
+    stroke: var(--hero-ink);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.watch-btn--sign:hover .ring svg {
+    fill: none;
+    stroke: var(--hero-accent-ink);
 }
 
 /* Sharp-corner accent button */
@@ -1663,7 +1677,7 @@ html.light-mode .nav-overlay {
     }
 
     .hero-inner {
-        padding-bottom: 260px;
+        padding-bottom: 310px;
     }
 
     .hero-social {
