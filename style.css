@@ -826,6 +826,11 @@ html.light-mode .room-light {
     scroll-margin-top: 72px;
 }
 
+/* Tighten the gap between stacked sections (About → Skills, etc.) */
+.section + .section {
+    padding-top: calc(var(--space) * 0.55);
+}
+
 .section--tint {
     background: var(--bg-2);
 }
@@ -923,6 +928,7 @@ html.light-mode .room-light {
     border: 1px solid var(--line);
     padding: 10px;
     background: var(--bg-2);
+    max-width: 84%;
 }
 
 .about-photo img {
@@ -1596,6 +1602,10 @@ html.light-mode .nav-overlay {
     .cv-grid,
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    .about-photo .frame {
+        max-width: 100%;
     }
 
     .skill-row {
