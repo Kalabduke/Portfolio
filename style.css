@@ -558,7 +558,7 @@ html.light-mode .room-light {
    ============================================================ */
 .hero {
     position: relative;
-    min-height: 100svh;
+    min-height: 90svh;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -593,7 +593,7 @@ html.light-mode .room-light {
     position: relative;
     z-index: 2;
     width: 100%;
-    padding-bottom: 210px;
+    padding-bottom: 260px;
 }
 
 .hero-kicker {
@@ -646,9 +646,16 @@ html.light-mode .room-light {
 .hero-actions {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 52px;
     margin-top: 40px;
     flex-wrap: wrap;
+}
+
+/* Per-app demo + its own View Work button */
+.hero-app {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Circular watch-style button */
@@ -746,56 +753,6 @@ html.light-mode .room-light {
     border-color: var(--ink);
     color: var(--ink);
     background: transparent;
-}
-
-/* Stats overlay: bottom */
-.hero-stats {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    border-top: 1px solid var(--line-soft);
-    background: rgba(14, 13, 11, 0.55);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-}
-
-.stats-row {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 clamp(20px, 4vw, 48px);
-}
-
-.stat {
-    padding: 26px 20px 26px 0;
-    border-right: 1px solid var(--line-soft);
-}
-
-.stat:last-child {
-    border-right: none;
-}
-
-.stat-num {
-    font-family: var(--display);
-    font-size: clamp(2rem, 4.5vw, 3.4rem);
-    font-weight: 900;
-    line-height: 1;
-    display: block;
-    color: var(--hero-ink);
-}
-
-.stat-label {
-    display: block;
-    margin-top: 8px;
-    font-family: var(--display);
-    font-size: 10px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.28em;
-    color: var(--hero-muted);
 }
 
 /* Hero socials: bottom left */
@@ -1654,30 +1611,8 @@ html.light-mode .nav-overlay {
 }
 
 @media (max-width: 560px) {
-    .stats-row {
-        grid-template-columns: 1fr;
-        padding: 0;
-    }
-
-    .stat {
-        border-right: none;
-        border-bottom: 1px solid var(--line-soft);
-        padding: 20px clamp(20px, 4vw, 48px);
-        display: flex;
-        align-items: baseline;
-        gap: 14px;
-    }
-
-    .stat:last-child {
-        border-bottom: none;
-    }
-
-    .stat-label {
-        margin-top: 0;
-    }
-
     .hero-inner {
-        padding-bottom: 310px;
+        padding-bottom: 350px;
     }
 
     .hero-social {
@@ -1868,11 +1803,6 @@ html.has-cursor select {
 .hero-title .line,
 .hero-bg {
     will-change: transform;
-}
-
-/* Count-up stats */
-.stat-num {
-    font-variant-numeric: tabular-nums;
 }
 
 /* Skill dots: stagger fill + level tooltip */
