@@ -1182,27 +1182,6 @@ html.light-mode .room-light {
     transform: translate(2px, -2px);
 }
 
-.proj-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: var(--display);
-    font-size: 12px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.24em;
-    background: var(--accent);
-    color: var(--accent-ink);
-    padding: 14px 22px;
-    border: 1px solid var(--accent);
-    transition: background 0.25s ease, color 0.25s ease;
-}
-
-.proj-cta:hover {
-    background: transparent;
-    color: var(--accent);
-}
-
 /* ============================================================
    CV
    ============================================================ */
@@ -1632,7 +1611,31 @@ html.light-mode .nav-overlay {
 
     .project-row {
         grid-template-columns: 1fr;
-        gap: 12px;
+        gap: 10px;
+        padding: clamp(26px, 6vw, 36px) 0;
+    }
+
+    .proj-num {
+        padding-top: 0;
+    }
+
+    .proj-body .proj-title {
+        font-size: clamp(1.15rem, 5.2vw, 1.45rem);
+        line-height: 1.15;
+    }
+
+    .proj-body .proj-desc {
+        font-size: 14px;
+    }
+
+    .proj-meta span {
+        padding-right: 10px;
+        margin-right: 10px;
+    }
+
+    .proj-links {
+        gap: 22px;
+        flex-wrap: wrap;
     }
 
     .form-row {
