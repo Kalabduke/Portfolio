@@ -530,6 +530,22 @@ html.light-mode .room-light {
     }
 }
 
+/* ============================================================
+   DESKTOP NAV — center the links between logo and lamp
+   ============================================================ */
+@media (min-width: 901px) {
+    .nav-container {
+        position: relative;
+    }
+
+    .nav-menu {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
 /* Hamburger: two dashes, editorial style */
 .nav-toggle {
     display: none;
