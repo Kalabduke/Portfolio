@@ -41,6 +41,11 @@ function renderSkillDots() {
     if (!container) return;
     container.innerHTML = '';
 
+    const scale = document.createElement('p');
+    scale.className = 'skills-scale';
+    scale.innerHTML = '<span>Proficiency scale</span><span aria-hidden="true">·</span><span>Filled dots show experience</span>';
+    container.appendChild(scale);
+
     SKILLS_DATA.forEach(skill => {
         const row = document.createElement('div');
         row.className = 'skill-row reveal';
@@ -51,6 +56,8 @@ function renderSkillDots() {
 
         const dots = document.createElement('div');
         dots.className = 'skill-dots';
+        dots.setAttribute('role', 'img');
+        dots.setAttribute('aria-label', `${skill.name}: proficiency shown on a ten-dot scale`);
         for (let i = 0; i < skill.total; i++) {
             const dot = document.createElement('i');
             dot.style.setProperty('--i', i);

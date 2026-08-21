@@ -23,6 +23,8 @@
     --line: rgba(242, 239, 233, 0.14);
     --line-soft: rgba(242, 239, 233, 0.08);
     --accent: #9ADBFF;
+    --skill-dot-off: #4A4741;
+    --skill-dot-on: #9ADBFF;
     --accent-ink: #0A0A0A;
     --card: rgba(242, 239, 233, 0.045);
 
@@ -102,6 +104,8 @@ html.light-mode {
     --line: rgba(28, 24, 18, 0.16);
     --line-soft: rgba(28, 24, 18, 0.09);
     --accent: #0E7CB8;
+    --skill-dot-off: #AAA398;
+    --skill-dot-on: #0E7CB8;
     --accent-ink: #FFFFFF;
     --card: rgba(28, 24, 18, 0.05);
     --nav-bg: rgba(245, 242, 236, 0.88);
@@ -1009,12 +1013,31 @@ html.light-mode .room-light {
 .skill-dots i {
     width: 8px;
     height: 8px;
-    background: var(--line);
-    transition: background 0.3s ease;
+    background: var(--skill-dot-off);
+    box-shadow: inset 0 0 0 1px rgba(242, 239, 233, 0.1);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.skill-dots i[data-fill='1'] {
+    background: var(--skill-dot-on);
+    box-shadow: 0 0 10px rgba(154, 219, 255, 0.3);
 }
 
 .skill-dots i.on {
-    background: var(--accent);
+    transform: scale(1.08);
+}
+
+.skills-scale {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 10px;
+    color: var(--muted);
+    font-family: var(--display);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 /* Soft skills: chip block under the technical bars */
