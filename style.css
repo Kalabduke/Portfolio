@@ -948,13 +948,13 @@ html.light-mode .room-light {
     border: 1px solid var(--line);
     padding: 10px;
     background: var(--bg-2);
-    max-width: 84%;
+    max-width: 100%;
 }
 
 .about-photo img {
     width: 100%;
+    height: clamp(420px, 41vw, 520px);
     filter: grayscale(100%) contrast(1.05);
-    aspect-ratio: 4 / 5;
     object-fit: cover;
 }
 
