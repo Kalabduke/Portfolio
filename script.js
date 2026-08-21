@@ -44,7 +44,6 @@ function renderSkillDots() {
     SKILLS_DATA.forEach(skill => {
         const row = document.createElement('div');
         row.className = 'skill-row reveal';
-        row.setAttribute('data-level', `${skill.level}/${skill.total}`);
 
         const name = document.createElement('span');
         name.className = 'skill-name';
