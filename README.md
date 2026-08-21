@@ -1,88 +1,66 @@
-<div align="center">
-<h1 style="color: #3b82f6;">🌐 Kaleab Abduke - Portfolio</h1>
-<p><strong>A modern, responsive portfolio website showcasing my journey as a Frontend & Android Developer</strong></p>
-<p>
-  <a href="https://sosaportfolio.netlify.app" target="_blank"><img src="https://img.shields.io/badge/Live%20Demo-3B82F6?style=for-the-badge&logo=netlify&logoColor=white" alt="Live Demo" /></a>
-  <a href="https://github.com/Kalabduke/Portfolio"><img src="https://img.shields.io/badge/GitHub-EF4444?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-  <img src="https://img.shields.io/badge/HTML5-3B82F6?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5" />
-  <img src="https://img.shields.io/badge/CSS3-EF4444?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3" />
-  <img src="https://img.shields.io/badge/JavaScript-3B82F6?style=for-the-badge&logo=javascript&logoColor=white" alt="JavaScript" />
-</p>
-</div>
-📸 Preview
-<div align="center">
-  <img src="https://via.placeholder.com/800x400/1E3A8A/FFFFFF?text=Portfolio+Screenshot+-+Add+Your+Own" alt="Portfolio Preview" width="80%" />
-  <p><em>Replace with an actual screenshot of your portfolio</em></p>
-</div>
-✨ Features
-🎨 Modern Design — Clean, professional aesthetic with a dark blue primary color scheme
-📱 Fully Responsive — Works seamlessly on desktop, tablet, and mobile
-✨ Smooth Animations — Hover effects, scroll animations, and micro-interactions
-🎯 Interactive Sections — Hero, About, Skills, Projects, and Contact
-🌟 Floating Particles — Animated background canvas for visual interest
-📧 Working Contact Form — Formspree integration for email messages
-🌙 Dark Mode Ready — CSS variables for easy theme switching
-⚡ Performance Optimized — Lighthouse score 95+, loads under 2 seconds
-🛠️ Tech Stack
-Table
-Technology	Purpose
-HTML5	Semantic markup structure
-CSS3	Grid, Flexbox, Variables, Animations
-JavaScript ES6+	Interactive features & form handling
-Font Awesome	Icon library
-Google Fonts (Inter)	Typography
-Formspree	Contact form backend
-📁 Project Structure
-plain
-portfolio/
-├── index.html          # Main HTML structure
-├── style.css           # Complete styling with CSS variables
-├── script.js           # Interactive JavaScript features
-└── README.md           # This file
-🚀 Getting Started
-1. Clone the repository
-bash
+# Kaleab Abduke — Portfolio
+
+The personal portfolio of Kaleab Abduke, an Odoo developer based in Addis Ababa, Ethiopia. It presents ERP work, selected projects, experience, and contact details.
+
+[View the live site](https://sosaportfolio.netlify.app) · [GitHub profile](https://github.com/Kalabduke)
+
+## Highlights
+
+- Odoo ERP development, workflow configuration, customisation, and automation
+- Responsive portfolio with light and dark themes
+- Downloadable CV and a Formspree-powered contact form
+- Featured projects: Pulse, SignLang, and a network traffic and log-analysis pipeline
+
+## Featured projects
+
+- **[Pulse](https://pulse-gray-eight.vercel.app/):** a realtime status-sharing and messaging app built with JavaScript, Supabase Realtime, Capacitor, and Firebase Cloud Messaging.
+- **[SignLang](https://signlang1.netlify.app/):** a sign-language learning app built with React, TypeScript, Tailwind, Vite, and Flutter.
+- **[Network Traffic & Log Analysis](https://github.com/Kalabduke/network-analysis):** a real-time network and system-log pipeline using Python, Kafka, Spark, Elasticsearch, Kibana, and Filebeat.
+
+## Technology
+
+The site uses plain HTML, CSS, and JavaScript. It loads Google Fonts and Font Awesome 6.7.0 from a CDN, so there is no build step or package installation required.
+
+## Run locally
+
+Clone the repository and serve the files from the project directory:
+
+```bash
 git clone https://github.com/Kalabduke/Portfolio.git
 cd Portfolio
-2. Open in browser
-Simply open index.html in your browser, or use a live server:
-bash
-# Using VS Code Live Server extension
-# Or Python simple server
 python -m http.server 8000
-3. Customize (Optional)
-Edit the following in the files:
-Personal info — Name, bio, location in index.html
-Colors — CSS variables in style.css (:root section)
-Projects — Add your own projects with screenshots
-Social links — Update all social media URLs
-📧 Contact Form Setup
-The contact form uses Formspree (no backend required):
-Go to formspree.io and sign up (free)
-Click New form and set notification email to kalabduke@gmail.com
-Copy your form ID from the endpoint (e.g., https://formspree.io/f/xyzabcde)
-In script.js, replace YOUR_FORM_ID:
-JavaScript
-const FORMSPREE_FORM_ID = 'xyzabcde';  // your actual ID
-🌐 Deployment
-Netlify (Recommended)
-Push to GitHub
-Connect repo at netlify.com
-Auto-deploys on every push!
-GitHub Pages
-Go to repo Settings → Pages
-Select source: Deploy from a branch → main
-Your site will be at https://kalabduke.github.io/Portfolio
-📊 Performance
-Table
-Metric	Score
-Lighthouse	95+
-Load Speed	< 2 seconds
-Mobile Friendly	✅ Fully responsive
-SEO Optimized	✅ Semantic HTML + meta tags
-📝 License
-This project is open source and available under the MIT License.
-Feel free to use this as a template for your own portfolio!
-<div align="center">
-Built with ❤️ by <a href="https://github.com/Kalabduke" style="color: #3b82f6;">
-</div>
+```
+
+Open [http://localhost:8000](http://localhost:8000) in a browser.
+
+## Project structure
+
+```text
+.
+├── index.html       # Main portfolio page
+├── projects.html    # Project listing
+├── contact.html     # Contact page
+├── style.css        # Shared site styles
+├── script.js        # Theme, interactions, CV, and contact-form behavior
+├── manifest.json    # Web app metadata
+├── assets/          # Images and icons
+└── cv/              # Downloadable CV
+```
+
+## Contact form
+
+The contact form submits messages through Formspree. Its form ID is configured in `script.js`:
+
+```js
+const FORMSPREE_FORM_ID = 'mwvrprgw';
+```
+
+To use a different Formspree form, replace that value with the new form ID before deploying.
+
+## Deploy
+
+The site is deployed on Netlify. To publish changes, push them to the repository branch connected to the Netlify site.
+
+## License
+
+All rights reserved. Do not reuse the portfolio’s personal content or assets without permission.
