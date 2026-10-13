@@ -9,13 +9,14 @@ The personal portfolio of Kaleab Abduke, an Odoo developer based in Addis Ababa,
 - Odoo ERP development, workflow configuration, customisation, and automation
 - Responsive portfolio with light and dark themes
 - Downloadable CV and a Formspree-powered contact form
-- Featured projects: Pulse, SignLang, and a network traffic and log-analysis pipeline
+- Featured projects: Pulse, SignLang, Nearby Gas, and a network traffic and log-analysis pipeline
 
 ## Featured projects
 
 - **[Pulse](https://pulse-gray-eight.vercel.app/):** a realtime status-sharing and messaging app built with JavaScript, Supabase Realtime, Capacitor, and Firebase Cloud Messaging.
 - **[SignLang](https://signlang1.netlify.app/):** a sign-language learning app built with React, TypeScript, Tailwind, Vite, and Flutter.
 - **[Network Traffic & Log Analysis](https://github.com/Kalabduke/network-analysis):** a real-time network and system-log pipeline using Python, Kafka, Spark, Elasticsearch, Kibana, and Filebeat.
+- **[Nearby Gas](https://github.com/Kalabduke/GasStationTracking):** a native Android gas station finder built with Kotlin, Jetpack Compose, Hilt, and Room, with TomTom-powered nearby search, an osmdroid map, traffic-aware routing, and offline favourites.
 
 ## Technology
 
