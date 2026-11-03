@@ -15,7 +15,7 @@ The personal portfolio of Kaleab Abduke, an Odoo developer based in Addis Ababa,
 
 - **[Pulse](https://pulse-gray-eight.vercel.app/):** a realtime status-sharing and messaging app built with JavaScript, Supabase Realtime, Capacitor, and Firebase Cloud Messaging.
 - **[SignLang](https://signlang1.netlify.app/):** a sign-language learning app built with React, TypeScript, Tailwind, Vite, and Flutter.
-- **[Network Traffic & Log Analysis](https://github.com/Kalabduke/network-analysis):** a real-time network and system-log pipeline using Python, Kafka, Spark, Elasticsearch, Kibana, and Filebeat.
+- **[Network Traffic & Log Analysis](https://github.com/Kalabduke/network-analysis):** a real-time network and system-log pipeline using Python, Kafka, Spark, Elasticsearch, Kibana, Packetbeat, and Filebeat. A trained Spark MLlib model scores each record for quality so cleaning follows the traffic rather than a fixed rule list, a detection layer flags port scans, host sweeps, brute-force bursts, and data exfiltration, and the output lands in typed, ordered indices ready for Kibana.
 - **[Nearby Gas](https://github.com/Kalabduke/GasStationTracking):** a native Android gas station finder built with Kotlin, Jetpack Compose, Hilt, and Room, with TomTom-powered nearby search, an osmdroid map, traffic-aware routing, and offline favourites.
 - **[Chatter](https://github.com/Kalabduke/Chatter):** a native Android messaging and calling app built with Kotlin, Jetpack Compose, and Hilt, using Firebase Auth for accounts and ZEGOCLOUD for chat and voice/video calls.
 

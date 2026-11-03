@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260821">
+    <link rel="stylesheet" href="style.css?v=20261103">
     <script>
         // Apply saved theme before first paint (no flash)
         try {
@@ -191,7 +191,8 @@
                         I've also shipped a <strong>realtime status &amp; messaging app</strong>
                         (PWA + native Android) and built a <strong>network traffic &amp; log
                         analysis pipeline</strong> during my internship at INSA's data analysis
-                        department.
+                        department, which I later extended with a Spark MLlib quality model and a
+                        detection layer for suspicious traffic.
                     </p>
                     <p>
                         I love taking an idea from a blank page to something people actually
@@ -304,13 +305,16 @@
                 <div class="proj-body">
                     <h3 class="proj-title">Network Traffic &amp; Log Analysis</h3>
                     <p class="proj-desc">
-                        Real-time data pipeline for capturing, processing, and analyzing network
-                        traffic and system logs. Built during my internship at INSA using the ELK
-                        stack, Kafka, and Spark.
+                        A real-time pipeline that captures network traffic and system logs, streams
+                        them through Kafka and cleans them in Spark before they reach Elasticsearch.
+                        A trained Spark MLlib model scores every record for quality, so the cleaning
+                        follows the traffic instead of a fixed list of rules, and a detection layer
+                        flags port scans, host sweeps, brute-force bursts and data exfiltration.
+                        Records land in typed, ordered indices ready to visualise in Kibana.
                     </p>
                     <div class="proj-meta">
-                        <span>Python</span><span>Apache Kafka</span><span>Apache Spark</span>
-                        <span>Elasticsearch</span><span>Kibana</span><span>Filebeat</span>
+                        <span>Python</span><span>Apache Spark</span><span>Spark MLlib</span>
+                        <span>Apache Kafka</span><span>Elasticsearch</span><span>Kibana</span>
                     </div>
                     <div class="proj-links">
                         <a href="https://github.com/Kalabduke/network-analysis" target="_blank" rel="noopener noreferrer">
@@ -449,7 +453,7 @@
                             </div>
                             <p class="cv-company">INSA (Information Network Security Agency)</p>
                             <ul class="cv-description">
-                                <li>Developed a real-time network analysis system</li>
+                                <li>Built a real-time pipeline that captured, cleaned &amp; indexed network traffic and system logs with Kafka, Spark and the ELK stack</li>
                                 <li>Worked inside the data analysis department</li>
                                 <li>Gained hands-on network monitoring &amp; data analysis practice</li>
                             </ul>

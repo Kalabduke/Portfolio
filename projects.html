@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Projects by Kaleab Abduke, Odoo Developer. Featuring Pulse, a realtime status-sharing and messaging app, SignLang, a sign language learning app, OCR Studio, Nearby Gas, a native Android gas station finder, Chatter, an Android messaging and calling app, and a network traffic analysis pipeline.">
+        content="Projects by Kaleab Abduke, Odoo Developer. Featuring Pulse, a realtime status-sharing and messaging app, SignLang, a sign language learning app, OCR Studio, Nearby Gas, a native Android gas station finder, Chatter, an Android messaging and calling app, and an AI-cleaned network traffic analysis pipeline.">
     <!-- Open Graph / Social Media Preview -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sosaportfolio.netlify.app/projects.html">
     <meta property="og:site_name" content="Kaleab Abduke">
     <meta property="og:title" content="Projects | Kaleab Abduke - Developer">
     <meta property="og:description"
-        content="Pulse, a realtime status-sharing and messaging app (PWA + Android), SignLang, a sign language learning app, OCR Studio, Nearby Gas, a native Android gas station finder, Chatter, an Android messaging and calling app, and a network traffic analysis pipeline.">
+        content="Pulse, a realtime status-sharing and messaging app (PWA + Android), SignLang, a sign language learning app, OCR Studio, Nearby Gas, a native Android gas station finder, Chatter, an Android messaging and calling app, and an AI-cleaned network traffic analysis pipeline.">
     <meta property="og:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Projects | Kaleab Abduke">
-    <meta name="twitter:description" content="Pulse, a realtime status-sharing and messaging app, SignLang, OCR Studio, Nearby Gas, a native Android gas station finder, Chatter, an Android messaging and calling app, and a network traffic analysis pipeline.">
+    <meta name="twitter:description" content="Pulse, a realtime status-sharing and messaging app, SignLang, OCR Studio, Nearby Gas, a native Android gas station finder, Chatter, an Android messaging and calling app, and an AI-cleaned network traffic analysis pipeline.">
     <meta name="twitter:image" content="https://sosaportfolio.netlify.app/assets/og-cover.png">
     <meta name="theme-color" content="#0E0D0B">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F5F2EC">
@@ -28,7 +28,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=20260821">
+    <link rel="stylesheet" href="style.css?v=20261103">
     <script>
         // Apply saved theme before first paint (no flash)
         try {
@@ -151,13 +151,29 @@
                 <div class="proj-body">
                     <h3 class="proj-title">Network Traffic &amp; Log Analysis</h3>
                     <p class="proj-desc">
-                        Real-time data pipeline for capturing, processing, and analyzing network
-                        traffic and system logs. Built during my internship at INSA using the ELK
-                        stack, Kafka, and Spark.
+                        A real-time pipeline that captures network traffic and system logs with
+                        Packetbeat and Filebeat, streams them through Kafka and cleans them in Spark
+                        before they reach Elasticsearch. A trained Spark MLlib model scores every
+                        record for quality, so the cleaning follows the traffic instead of a fixed
+                        list of rules, and a detection layer flags port scans, host sweeps,
+                        brute-force bursts and data exfiltration. Records land in typed, ordered
+                        indices that are ready to visualise in Kibana. Originally built during my
+                        internship at INSA.
+                    </p>
+                    <p class="proj-desc">
+                        <strong>How it works.</strong> Two Spark jobs do the work. A training job
+                        learns from the pipeline's own accept-and-reject history, fits a classifier
+                        and tunes its decision threshold, then saves the model. A serving job loads
+                        that model, scores every incoming record and routes it to one of three
+                        indices, clean, flagged or quarantined, each with the reason it landed
+                        there. The original hand-written rules stay in place as a safety net, so a
+                        missing model degrades the pipeline to its old behaviour instead of
+                        stopping it.
                     </p>
                     <div class="proj-meta">
-                        <span>Python</span><span>Apache Kafka</span><span>Apache Spark</span>
-                        <span>Elasticsearch</span><span>Kibana</span><span>Filebeat</span>
+                        <span>Python</span><span>Apache Spark</span><span>Spark MLlib</span>
+                        <span>Apache Kafka</span><span>Elasticsearch</span><span>Kibana</span>
+                        <span>Packetbeat</span>
                     </div>
                     <div class="proj-links">
                         <a href="https://github.com/Kalabduke/network-analysis" target="_blank" rel="noopener noreferrer">
