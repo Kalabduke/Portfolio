@@ -995,139 +995,90 @@ html.light-mode .room-light {
 }
 
 /* ============================================================
-   SKILLS | editorial list
+   SKILLS & ARCHITECTURAL DOMAIN CARDS
    ============================================================ */
-.skill-row {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    padding: 22px 0;
-    border-bottom: 1px solid var(--line-soft);
-    transition: background 0.25s ease;
+.skills-domain-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(20px, 3vw, 32px);
+    margin-top: clamp(24px, 4vw, 40px);
 }
 
-.skill-row:first-child {
-    border-top: 1px solid var(--line-soft);
+@media (max-width: 820px) {
+    .skills-domain-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.skill-row:hover {
+.skill-domain-card {
     background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: clamp(24px, 4vw, 36px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.3s ease,
+                background 0.3s ease,
+                box-shadow 0.35s ease;
 }
 
-.skill-name {
+.skill-domain-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    background: rgba(242, 239, 233, 0.07);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+
+html.light-mode .skill-domain-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 12px 32px rgba(28, 24, 18, 0.08);
+}
+
+.sd-title {
     font-family: var(--display);
-    font-size: var(--fs-md);
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
     font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    width: 220px;
-    flex-shrink: 0;
+    color: var(--ink);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
 }
 
-.skill-dots {
-    flex: 1;
-    display: flex;
-    gap: 6px;
-    align-items: center;
-}
-
-.skill-dots i {
-    width: 8px;
-    height: 8px;
-    background: var(--skill-dot-off);
-    box-shadow: inset 0 0 0 1px rgba(242, 239, 233, 0.1);
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-}
-
-.skill-dots i[data-fill='1'] {
-    background: var(--skill-dot-on);
-    box-shadow: 0 0 10px rgba(154, 219, 255, 0.3);
-}
-
-.skill-dots i.on {
-    transform: scale(1.08);
-}
-
-.skills-scale {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 0 10px;
-    color: var(--muted);
-    font-family: var(--display);
-    font-size: var(--fs-xs);
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-}
-
-/* Soft skills: chip block under the technical bars */
-.soft-skills {
-    margin-top: clamp(32px, 4vw, 48px);
-    padding-top: clamp(24px, 3vw, 36px);
-    border-top: 1px solid var(--line-soft);
-}
-
-.soft-skills-label {
-    font-family: var(--display);
+.sd-desc {
     font-size: var(--fs-sm);
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--accent);
-    margin-bottom: 18px;
+    color: var(--muted);
+    line-height: 1.55;
 }
 
-.soft-skills-list {
+.sd-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
-.soft-chip {
-    font-family: var(--display);
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text);
-    border: 1px solid var(--line);
-    padding: 8px 16px;
-    transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+.sd-tag {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    background: var(--bg-2);
+    color: var(--ink);
+    border: 1px solid var(--line-soft);
+    border-radius: 8px;
+    transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.soft-chip:hover {
-    border-color: var(--accent);
-    color: var(--accent);
+.skill-domain-card:hover .sd-tag {
+    border-color: var(--line);
 }
 
-/* Dots grid variant (kept for script.js render) */
-.skill-dots-container {
-    display: flex;
-    gap: 6px;
-}
-
-.skill-dots-container .dot {
-    width: 8px;
-    height: 8px;
-    background: var(--line);
-}
-
-.skill-dots-container .dot.filled {
-    background: var(--accent);
-}
-
-.skill-dot-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 8px;
-}
-
-.skill-dot-header .skill-name {
-    width: auto;
-    font-size: 13px;
-}
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
 
 /* ============================================================
    PROJECTS | numbered editorial rows

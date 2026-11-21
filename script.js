@@ -9,86 +9,68 @@ const FORMSPREE_ENDPOINT = 'https://formspree.io/f/' + FORMSPREE_FORM_ID;
 window.FORMSPREE_ENDPOINT = FORMSPREE_ENDPOINT;
 
 // ============================================================
-// SKILLS DATA: single source of truth
+// SKILLS & ARCHITECTURAL DOMAINS
 // ============================================================
-const SKILLS_DATA = [
-    { name: 'Odoo ERP',    level: 5, total: 10 },
-    { name: 'Python',      level: 6, total: 10 },
-    { name: 'JavaScript',  level: 7, total: 10 },
-    { name: 'Next.js',     level: 6, total: 10 },
-    { name: 'HTML / CSS',  level: 8, total: 10 },
-    { name: 'PostgreSQL',  level: 6, total: 10 },
-    { name: 'Linux (Ubuntu)', level: 7, total: 10 },
-    { name: 'Android / Kotlin', level: 5, total: 10 },
+const SKILLS_DOMAINS = [
+    {
+        category: 'Enterprise & Backend Architecture',
+        description: 'Mission-critical business workflows, automated accounting / leasing engines, and relational schema optimization.',
+        skills: ['Odoo ERP', 'Python', 'PostgreSQL', 'REST APIs', 'Linux (Ubuntu)', 'Systemd Automation']
+    },
+    {
+        category: 'Mobile & Client Engineering',
+        description: 'Native Android and reactive cross-platform applications with offline-first persistence and responsive UX.',
+        skills: ['Android (Kotlin)', 'Jetpack Compose', 'Hilt & Room', 'React & TypeScript', 'Flutter', 'Tailwind CSS']
+    },
+    {
+        category: 'Distributed Streaming & Data',
+        description: 'Real-time telemetry pipelines, log stream classification, and automated indexing.',
+        skills: ['Apache Kafka', 'Apache Spark', 'Spark MLlib', 'Elasticsearch', 'Kibana', 'Packetbeat / Filebeat']
+    },
+    {
+        category: 'Modern Web & Cloud Infrastructure',
+        description: 'Full-stack applications, real-time WebSocket synchronization, and containerized deployments.',
+        skills: ['JavaScript (ESNext)', 'Next.js', 'Supabase Realtime', 'Firebase (FCM/Auth)', 'Docker', 'Vercel / Netlify']
+    }
 ];
 
-// Soft skills: shown as chips under the technical bars
-const SOFT_SKILLS = [
-    'Communication',
-    'Problem Solving',
-    'Teamwork',
-    'Adaptability',
-    'Time Management',
-    'Attention to Detail',
-    'Leadership',
-];
-
-// ============================================================
-// RENDER SKILLS: editorial rows
-// ============================================================
 function renderSkillDots() {
     const container = document.getElementById('skill-dots-container');
     if (!container) return;
     container.innerHTML = '';
+    container.className = 'skills-domain-grid';
 
-    const scale = document.createElement('p');
-    scale.className = 'skills-scale';
-    scale.innerHTML = '<span>Proficiency scale</span><span aria-hidden="true">·</span><span>Filled dots show experience</span>';
-    container.appendChild(scale);
+    SKILLS_DOMAINS.forEach((domain, idx) => {
+        const card = document.createElement('div');
+        card.className = `skill-domain-card reveal reveal-delay-${idx + 1}`;
 
-    SKILLS_DATA.forEach(skill => {
-        const row = document.createElement('div');
-        row.className = 'skill-row reveal';
+        const header = document.createElement('div');
+        header.className = 'sd-header';
 
-        const name = document.createElement('span');
-        name.className = 'skill-name';
-        name.textContent = skill.name;
+        const title = document.createElement('h3');
+        title.className = 'sd-title';
+        title.textContent = domain.category;
 
-        const dots = document.createElement('div');
-        dots.className = 'skill-dots';
-        dots.setAttribute('role', 'img');
-        dots.setAttribute('aria-label', `${skill.name}: proficiency shown on a ten-dot scale`);
-        for (let i = 0; i < skill.total; i++) {
-            const dot = document.createElement('i');
-            dot.style.setProperty('--i', i);
-            if (i < skill.level) dot.dataset.fill = '1'; // lit up with stagger by initSkillStagger
-            dots.appendChild(dot);
-        }
+        const desc = document.createElement('p');
+        desc.className = 'sd-desc';
+        desc.textContent = domain.description;
 
-        row.appendChild(name);
-        row.appendChild(dots);
-        container.appendChild(row);
+        header.appendChild(title);
+        header.appendChild(desc);
+
+        const tags = document.createElement('div');
+        tags.className = 'sd-tags';
+        domain.skills.forEach(skill => {
+            const tag = document.createElement('span');
+            tag.className = 'sd-tag';
+            tag.textContent = skill;
+            tags.appendChild(tag);
+        });
+
+        card.appendChild(header);
+        card.appendChild(tags);
+        container.appendChild(card);
     });
-
-    // Soft skills block below the bars
-    const softWrap = document.createElement('div');
-    softWrap.className = 'soft-skills';
-
-    const softLabel = document.createElement('div');
-    softLabel.className = 'soft-skills-label';
-    softLabel.textContent = 'Soft Skills';
-    softWrap.appendChild(softLabel);
-
-    const softList = document.createElement('div');
-    softList.className = 'soft-skills-list';
-    SOFT_SKILLS.forEach(skill => {
-        const chip = document.createElement('span');
-        chip.className = 'soft-chip';
-        chip.textContent = skill;
-        softList.appendChild(chip);
-    });
-    softWrap.appendChild(softList);
-    container.appendChild(softWrap);
 }
 
 // ============================================================
